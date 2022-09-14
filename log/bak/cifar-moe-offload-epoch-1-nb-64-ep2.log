@@ -1,0 +1,52 @@
+[2022-09-10 21:48:04,418] [WARNING] [runner.py:178:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2022-09-10 21:48:04,556] [INFO] [runner.py:504:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMSwgMiwgM119 --master_addr=127.0.0.1 --master_port=29500 cifar10_deepspeed.py --log-interval 100 --deepspeed --deepspeed_config ds_config_offload.json --moe --ep-world-size 4 --num-experts 2 --top-k 1 --noisy-gate-policy RSample --moe-param-group
+[2022-09-10 21:48:06,132] [INFO] [launch.py:136:main] WORLD INFO DICT: {'localhost': [0, 1, 2, 3]}
+[2022-09-10 21:48:06,133] [INFO] [launch.py:143:main] nnodes=1, num_local_procs=4, node_rank=0
+[2022-09-10 21:48:06,133] [INFO] [launch.py:155:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1, 2, 3]})
+[2022-09-10 21:48:06,133] [INFO] [launch.py:156:main] dist_world_size=4
+[2022-09-10 21:48:06,133] [INFO] [launch.py:158:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3
+[2022-09-10 21:48:07,820] [INFO] [comm.py:635:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[W ProcessGroupNCCL.cpp:1569] Rank 3 using best-guess GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+[W ProcessGroupNCCL.cpp:1569] Rank 1 using best-guess GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+[W ProcessGroupNCCL.cpp:1569] Rank 2 using best-guess GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+[W ProcessGroupNCCL.cpp:1569] Rank 0 using best-guess GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+ bird  bird  bird  ship
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 228, in <module>
+    net = Net()
+  File "cifar10_deepspeed.py", line 203, in __init__
+    noisy_gate_policy=args.noisy_gate_policy))
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 54, in __init__
+    assert num_experts % ep_size == 0, f"Number of experts ({num_experts}) should be divisible by expert parallel size ({ep_size})"
+AssertionError: Number of experts (2) should be divisible by expert parallel size (4)
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+  cat   cat   dog  bird
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 228, in <module>
+    net = Net()
+  File "cifar10_deepspeed.py", line 203, in __init__
+    noisy_gate_policy=args.noisy_gate_policy))
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 54, in __init__
+    assert num_experts % ep_size == 0, f"Number of experts ({num_experts}) should be divisible by expert parallel size ({ep_size})"
+AssertionError: Number of experts (2) should be divisible by expert parallel size (4)
+[2022-09-10 21:48:17,214] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 50924
+[2022-09-10 21:48:17,215] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 50925
+plane  bird  bird plane
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 228, in <module>
+    net = Net()
+  File "cifar10_deepspeed.py", line 203, in __init__
+    noisy_gate_policy=args.noisy_gate_policy))
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 54, in __init__
+    assert num_experts % ep_size == 0, f"Number of experts ({num_experts}) should be divisible by expert parallel size ({ep_size})"
+AssertionError: Number of experts (2) should be divisible by expert parallel size (4)
+[2022-09-10 21:48:17,573] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 50926
+[2022-09-10 21:48:17,809] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 50927
+[2022-09-10 21:48:18,003] [ERROR] [launch.py:292:sigkill_handler] ['/usr/bin/python3', '-u', 'cifar10_deepspeed.py', '--local_rank=3', '--log-interval', '100', '--deepspeed', '--deepspeed_config', 'ds_config_offload.json', '--moe', '--ep-world-size', '4', '--num-experts', '2', '--top-k', '1', '--noisy-gate-policy', 'RSample', '--moe-param-group'] exits with return code = 1

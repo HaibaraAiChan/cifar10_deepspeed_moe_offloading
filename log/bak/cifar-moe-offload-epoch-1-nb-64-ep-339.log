@@ -1,0 +1,77 @@
+[2022-09-10 22:16:04,409] [WARNING] [runner.py:178:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2022-09-10 22:16:04,542] [INFO] [runner.py:504:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMSwgMl19 --master_addr=127.0.0.1 --master_port=29500 cifar10_deepspeed.py --log-interval 10 --deepspeed --deepspeed_config ds_config_offload.json --moe --ep-world-size 3 --num-experts 9 --top-k 1 --noisy-gate-policy RSample --moe-param-group
+[2022-09-10 22:16:06,086] [INFO] [launch.py:136:main] WORLD INFO DICT: {'localhost': [0, 1, 2]}
+[2022-09-10 22:16:06,086] [INFO] [launch.py:143:main] nnodes=1, num_local_procs=3, node_rank=0
+[2022-09-10 22:16:06,086] [INFO] [launch.py:155:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1, 2]})
+[2022-09-10 22:16:06,086] [INFO] [launch.py:156:main] dist_world_size=3
+[2022-09-10 22:16:06,086] [INFO] [launch.py:158:main] Setting CUDA_VISIBLE_DEVICES=0,1,2
+[2022-09-10 22:16:07,787] [INFO] [comm.py:635:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[W ProcessGroupNCCL.cpp:1569] Rank 2 using best-guess GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+[W ProcessGroupNCCL.cpp:1569] Rank 1 using best-guess GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+[W ProcessGroupNCCL.cpp:1569] Rank 0 using best-guess GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+plane  frog   cat   dog
+[2022-09-10 22:16:15,696] [INFO] [logging.py:68:log_dist] [Rank 0] Creating MoE layer with num_experts: 9 | num_local_experts: 3 | expert_parallel_size: 3
+[2022-09-10 22:16:15,699] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.7.3+a691ec60, git-hash=a691ec60, git-branch=master
+[2022-09-10 22:16:15,701] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 251, in <module>
+    args=args, model=net, model_parameters=parameters, training_data=trainset)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/__init__.py", line 134, in initialize
+    config_params=config_params)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 263, in __init__
+    self._configure_with_arguments(args, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 894, in _configure_with_arguments
+    self._config = DeepSpeedConfig(self.config, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 799, in __init__
+    self._configure_train_batch_size()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 968, in _configure_train_batch_size
+    self._batch_assertion()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 916, in _batch_assertion
+    f"Check batch related parameters. train_batch_size is not equal "
+AssertionError: Check batch related parameters. train_batch_size is not equal to micro_batch_per_gpu * gradient_acc_step * world_size 16 != 5 * 1 * 3
+Files already downloaded and verified
+Files already downloaded and verified
+horse   dog   cat truck
+truck   cat   car horse
+[2022-09-10 22:16:16,999] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+[2022-09-10 22:16:17,006] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 251, in <module>
+    args=args, model=net, model_parameters=parameters, training_data=trainset)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/__init__.py", line 134, in initialize
+    config_params=config_params)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 263, in __init__
+    self._configure_with_arguments(args, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 894, in _configure_with_arguments
+    self._config = DeepSpeedConfig(self.config, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 799, in __init__
+    self._configure_train_batch_size()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 968, in _configure_train_batch_size
+    self._batch_assertion()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 916, in _batch_assertion
+    f"Check batch related parameters. train_batch_size is not equal "
+AssertionError: Check batch related parameters. train_batch_size is not equal to micro_batch_per_gpu * gradient_acc_step * world_size 16 != 5 * 1 * 3
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 251, in <module>
+    args=args, model=net, model_parameters=parameters, training_data=trainset)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/__init__.py", line 134, in initialize
+    config_params=config_params)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 263, in __init__
+    self._configure_with_arguments(args, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 894, in _configure_with_arguments
+    self._config = DeepSpeedConfig(self.config, mpu)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 799, in __init__
+    self._configure_train_batch_size()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 968, in _configure_train_batch_size
+    self._batch_assertion()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/config.py", line 916, in _batch_assertion
+    f"Check batch related parameters. train_batch_size is not equal "
+AssertionError: Check batch related parameters. train_batch_size is not equal to micro_batch_per_gpu * gradient_acc_step * world_size 16 != 5 * 1 * 3
+[2022-09-10 22:16:17,148] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 3595
+[2022-09-10 22:16:17,150] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 3596
+[2022-09-10 22:16:17,468] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 3597
+[2022-09-10 22:16:17,744] [ERROR] [launch.py:292:sigkill_handler] ['/usr/bin/python3', '-u', 'cifar10_deepspeed.py', '--local_rank=2', '--log-interval', '10', '--deepspeed', '--deepspeed_config', 'ds_config_offload.json', '--moe', '--ep-world-size', '3', '--num-experts', '9', '--top-k', '1', '--noisy-gate-policy', 'RSample', '--moe-param-group'] exits with return code = 1

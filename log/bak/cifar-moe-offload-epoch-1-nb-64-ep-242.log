@@ -1,0 +1,62 @@
+[2022-09-10 22:12:17,586] [WARNING] [runner.py:178:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2022-09-10 22:12:17,714] [INFO] [runner.py:504:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMV19 --master_addr=127.0.0.1 --master_port=29500 cifar10_deepspeed.py --log-interval 100 --deepspeed --deepspeed_config ds_config_offload.json --moe --ep-world-size 4 --num-experts 4 --top-k 1 --noisy-gate-policy RSample --moe-param-group
+[2022-09-10 22:12:19,250] [INFO] [launch.py:136:main] WORLD INFO DICT: {'localhost': [0, 1]}
+[2022-09-10 22:12:19,250] [INFO] [launch.py:143:main] nnodes=1, num_local_procs=2, node_rank=0
+[2022-09-10 22:12:19,250] [INFO] [launch.py:155:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2022-09-10 22:12:19,250] [INFO] [launch.py:156:main] dist_world_size=2
+[2022-09-10 22:12:19,250] [INFO] [launch.py:158:main] Setting CUDA_VISIBLE_DEVICES=0,1
+[2022-09-10 22:12:20,936] [INFO] [comm.py:635:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[W ProcessGroupNCCL.cpp:1569] Rank 1 using best-guess GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+[W ProcessGroupNCCL.cpp:1569] Rank 0 using best-guess GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+Files already downloaded and verified
+  cat   car   cat truck
+[2022-09-10 22:12:27,892] [INFO] [logging.py:68:log_dist] [Rank 0] Creating MoE layer with num_experts: 4 | num_local_experts: 1 | expert_parallel_size: 4
+[2022-09-10 22:12:27,894] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.7.3+a691ec60, git-hash=a691ec60, git-branch=master
+[2022-09-10 22:12:27,896] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+No existing process group found, creating a new group named: ep_size_4
+[2022-09-10 22:12:27,901] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert and data parallel groups with size 4
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 251, in <module>
+    args=args, model=net, model_parameters=parameters, training_data=trainset)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/__init__.py", line 134, in initialize
+    config_params=config_params)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 288, in __init__
+    self._configure_distributed_model(model)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 1074, in _configure_distributed_model
+    module.set_deepspeed_parallelism()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 88, in set_deepspeed_parallelism
+    self._create_process_groups()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 99, in _create_process_groups
+    groups._create_expert_and_data_parallel(self.ep_size)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/utils/groups.py", line 130, in _create_expert_and_data_parallel
+    _ensure_divisibility(world_size, expert_parallel_size_)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/utils/groups.py", line 55, in _ensure_divisibility
+    numerator, denominator)
+AssertionError: 2 is not divisible by 4
+Files already downloaded and verified
+truck  ship  bird  bird
+[2022-09-10 22:12:29,244] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+No existing process group found, creating a new group named: ep_size_4
+Traceback (most recent call last):
+  File "cifar10_deepspeed.py", line 251, in <module>
+    args=args, model=net, model_parameters=parameters, training_data=trainset)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/__init__.py", line 134, in initialize
+    config_params=config_params)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 288, in __init__
+    self._configure_distributed_model(model)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/runtime/engine.py", line 1074, in _configure_distributed_model
+    module.set_deepspeed_parallelism()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 88, in set_deepspeed_parallelism
+    self._create_process_groups()
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/moe/layer.py", line 99, in _create_process_groups
+    groups._create_expert_and_data_parallel(self.ep_size)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/utils/groups.py", line 130, in _create_expert_and_data_parallel
+    _ensure_divisibility(world_size, expert_parallel_size_)
+  File "/home/cc/.local/lib/python3.6/site-packages/deepspeed/utils/groups.py", line 55, in _ensure_divisibility
+    numerator, denominator)
+AssertionError: 2 is not divisible by 4
+[2022-09-10 22:12:29,290] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 1029
+[2022-09-10 22:12:29,290] [INFO] [launch.py:286:sigkill_handler] Killing subprocess 1030
+[2022-09-10 22:12:29,618] [ERROR] [launch.py:292:sigkill_handler] ['/usr/bin/python3', '-u', 'cifar10_deepspeed.py', '--local_rank=1', '--log-interval', '100', '--deepspeed', '--deepspeed_config', 'ds_config_offload.json', '--moe', '--ep-world-size', '4', '--num-experts', '4', '--top-k', '1', '--noisy-gate-policy', 'RSample', '--moe-param-group'] exits with return code = 1

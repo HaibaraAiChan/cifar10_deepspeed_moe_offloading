@@ -1,0 +1,549 @@
+[2022-09-13 22:27:53,123] [WARNING] [runner.py:178:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2022-09-13 22:27:55,246] [INFO] [runner.py:504:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMSwgMiwgM119 --master_addr=127.0.0.1 --master_port=29500 cifar10_deepspeed.py --log-interval 10 --deepspeed --deepspeed_config ds_config.json --moe --ep-world-size 4 --num-experts 24 --top-k 1 --noisy-gate-policy RSample --moe-param-group
+[2022-09-13 22:27:56,342] [INFO] [launch.py:136:main] WORLD INFO DICT: {'localhost': [0, 1, 2, 3]}
+[2022-09-13 22:27:56,343] [INFO] [launch.py:143:main] nnodes=1, num_local_procs=4, node_rank=0
+[2022-09-13 22:27:56,343] [INFO] [launch.py:155:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1, 2, 3]})
+[2022-09-13 22:27:56,343] [INFO] [launch.py:156:main] dist_world_size=4
+[2022-09-13 22:27:56,343] [INFO] [launch.py:158:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3
+[2022-09-13 22:27:57,709] [INFO] [comm.py:635:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[W ProcessGroupNCCL.cpp:1569] Rank 3 using best-guess GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+[W ProcessGroupNCCL.cpp:1569] Rank 1 using best-guess GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+[W ProcessGroupNCCL.cpp:1569] Rank 2 using best-guess GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+[W ProcessGroupNCCL.cpp:1569] Rank 0 using best-guess GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+  car   car  bird   car
+[2022-09-13 22:28:02,874] [INFO] [logging.py:68:log_dist] [Rank 0] Creating MoE layer with num_experts: 24 | num_local_experts: 6 | expert_parallel_size: 4
+total model parameters size  106862
+trainable parameters
+conv1.weight, torch.Size([6, 3, 5, 5])
+conv1.bias, torch.Size([6])
+conv2.weight, torch.Size([16, 6, 5, 5])
+conv2.bias, torch.Size([16])
+fc1.weight, torch.Size([120, 400])
+fc1.bias, torch.Size([120])
+fc2.weight, torch.Size([84, 120])
+fc2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.gate.wg.weight, torch.Size([24, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.bias, torch.Size([84])
+fc4.weight, torch.Size([10, 84])
+fc4.bias, torch.Size([10])
+----------------------------------------
+un-trainable parameters
+[2022-09-13 22:28:02,878] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.7.3+a691ec60, git-hash=a691ec60, git-branch=master
+[2022-09-13 22:28:02,880] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+No existing process group found, creating a new group named: ep_size_4
+[2022-09-13 22:28:02,885] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert and data parallel groups with size 4
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+  cat  frog horse  frog
+total model parameters size  106862
+trainable parameters
+conv1.weight, torch.Size([6, 3, 5, 5])
+conv1.bias, torch.Size([6])
+conv2.weight, torch.Size([16, 6, 5, 5])
+conv2.bias, torch.Size([16])
+fc1.weight, torch.Size([120, 400])
+fc1.bias, torch.Size([120])
+fc2.weight, torch.Size([84, 120])
+fc2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.gate.wg.weight, torch.Size([24, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.bias, torch.Size([84])
+fc4.weight, torch.Size([10, 84])
+fc4.bias, torch.Size([10])
+----------------------------------------
+un-trainable parameters
+[2022-09-13 22:28:03,860] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+No existing process group found, creating a new group named: ep_size_4
+ frog  bird plane   cat
+ frog plane  frog   cat
+total model parameters size  106862
+trainable parameters
+conv1.weight, torch.Size([6, 3, 5, 5])
+conv1.bias, torch.Size([6])
+conv2.weight, torch.Size([16, 6, 5, 5])
+conv2.bias, torch.Size([16])
+fc1.weight, torch.Size([120, 400])
+fc1.bias, torch.Size([120])
+fc2.weight, torch.Size([84, 120])
+fc2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.gate.wg.weight, torch.Size([24, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.bias, torch.Size([84])
+fc4.weight, torch.Size([10, 84])
+fc4.bias, torch.Size([10])
+----------------------------------------
+un-trainable parameters
+total model parameters size  106862
+trainable parameters
+conv1.weight, torch.Size([6, 3, 5, 5])
+conv1.bias, torch.Size([6])
+conv2.weight, torch.Size([16, 6, 5, 5])
+conv2.bias, torch.Size([16])
+fc1.weight, torch.Size([120, 400])
+fc1.bias, torch.Size([120])
+fc2.weight, torch.Size([84, 120])
+fc2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.gate.wg.weight, torch.Size([24, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.0.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.1.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.2.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.3.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.4.bias, torch.Size([84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.weight, torch.Size([84, 84])
+moe_layer_list.0.deepspeed_moe.experts.deepspeed_experts.5.bias, torch.Size([84])
+fc4.weight, torch.Size([10, 84])
+fc4.bias, torch.Size([10])
+----------------------------------------
+un-trainable parameters
+[2022-09-13 22:28:03,877] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+[2022-09-13 22:28:03,877] [WARNING] [config_utils.py:64:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+No existing process group found, creating a new group named: ep_size_4
+No existing process group found, creating a new group named: ep_size_4
+[2022-09-13 22:28:03,891] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert data parallel process group named ep_size_4 with ranks: [0]
+[2022-09-13 22:28:03,902] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert data parallel process group named ep_size_4 with ranks: [1]
+[2022-09-13 22:28:03,902] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert data parallel process group named ep_size_4 with ranks: [2]
+[2022-09-13 22:28:03,913] [INFO] [logging.py:68:log_dist] [Rank 0] Creating expert data parallel process group named ep_size_4 with ranks: [3]
+[2022-09-13 22:28:03,924] [INFO] [logging.py:68:log_dist] [Rank 0] creating expert parallel process group named ep_size_4 with ranks: [0, 1, 2, 3]
+[2022-09-13 22:28:04,263] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2022-09-13 22:28:04,265] [INFO] [logging.py:68:log_dist] [Rank 0] Using DeepSpeed Optimizer param name adam as basic optimizer
+[2022-09-13 22:28:04,265] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Basic Optimizer = {basic_optimizer.__class__.__name__}
+[2022-09-13 22:28:04,265] [INFO] [logging.py:68:log_dist] [Rank 0] Creating fp16 optimizer with dynamic loss scale
+fp16=True
+fp16=True
+[2022-09-13 22:28:04,269] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Final Optimizer = adam
+[2022-09-13 22:28:04,270] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupLR
+[2022-09-13 22:28:04,270] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupLR object at 0x7fb25573a2b0>
+[2022-09-13 22:28:04,270] [INFO] [logging.py:68:log_dist] [Rank 0] step=0, skipped=0, lr=[0.001, 0.001], mom=[[0.8, 0.999], [0.8, 0.999]]
+fp16=True
+[2022-09-13 22:28:04,270] [INFO] [config.py:987:print] DeepSpeedEngine configuration:
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   amp_enabled .................. False
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   amp_params ................... False
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": null, 
+    "exps_dir": null, 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2022-09-13 22:28:04,271] [INFO] [config.py:991:print]   bfloat16_enabled ............. False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   checkpoint_tag_validation_enabled  True
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   checkpoint_tag_validation_fail  False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fb25573a748>
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   communication_data_type ...... None
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   curriculum_enabled ........... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   curriculum_params ............ False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   dataloader_drop_last ......... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   disable_allgather ............ False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   dump_state ................... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   dynamic_loss_scale_args ...... {'init_scale': 32768, 'scale_window': 500, 'delayed_shift': 2, 'min_scale': 1}
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_enabled ........... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_gas_boundary_resolution  1
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_layer_num ......... 0
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_max_iter .......... 100
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_stability ......... 1e-06
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_tol ............... 0.01
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   eigenvalue_verbose ........... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   elasticity_enabled ........... False
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2022-09-13 22:28:04,272] [INFO] [config.py:991:print]   fp16_auto_cast ............... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   fp16_enabled ................. True
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   fp16_master_weights_and_gradients  False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   global_rank .................. 0
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   gradient_accumulation_steps .. 1
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   gradient_clipping ............ 1.0
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   gradient_predivide_factor .... 1.0
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   initial_dynamic_scale ........ 32768
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   load_universal_checkpoint .... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   loss_scale ................... 0
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   memory_breakdown ............. False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   monitor_config ............... <deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x7fb25573a710>
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   optimizer_legacy_fusion ...... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   optimizer_name ............... adam
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   optimizer_params ............. {'lr': 0.001, 'betas': [0.8, 0.999], 'eps': 1e-08, 'weight_decay': 3e-07}
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   pld_enabled .................. False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   pld_params ................... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   prescale_gradients ........... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   scheduler_name ............... WarmupLR
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   scheduler_params ............. {'warmup_min_lr': 0, 'warmup_max_lr': 0.001, 'warmup_num_steps': 1000}
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   sparse_attention ............. None
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   sparse_gradients_enabled ..... False
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   steps_per_print .............. 2000
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   train_batch_size ............. 16
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   train_micro_batch_size_per_gpu  4
+[2022-09-13 22:28:04,273] [INFO] [config.py:991:print]   wall_clock_breakdown ......... False
+[2022-09-13 22:28:04,274] [INFO] [config.py:991:print]   world_size ................... 4
+[2022-09-13 22:28:04,274] [INFO] [config.py:991:print]   zero_allow_untested_optimizer  False
+[2022-09-13 22:28:04,274] [INFO] [config.py:991:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=50000000 allgather_partitions=True allgather_bucket_size=50000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=False prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2022-09-13 22:28:04,274] [INFO] [config.py:991:print]   zero_enabled ................. False
+[2022-09-13 22:28:04,274] [INFO] [config.py:991:print]   zero_optimization_stage ...... 0
+[2022-09-13 22:28:04,274] [INFO] [config.py:983:print_user_config]   json = {
+    "train_batch_size": 16, 
+    "steps_per_print": 2.000000e+03, 
+    "optimizer": {
+        "type": "Adam", 
+        "params": {
+            "lr": 0.001, 
+            "betas": [0.8, 0.999], 
+            "eps": 1e-08, 
+            "weight_decay": 3e-07
+        }
+    }, 
+    "scheduler": {
+        "type": "WarmupLR", 
+        "params": {
+            "warmup_min_lr": 0, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 1000
+        }
+    }, 
+    "gradient_clipping": 1.0, 
+    "prescale_gradients": false, 
+    "fp16": {
+        "enabled": true, 
+        "fp16_master_weights_and_grads": false, 
+        "loss_scale": 0, 
+        "loss_scale_window": 500, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1, 
+        "initial_scale_power": 15
+    }, 
+    "wall_clock_breakdown": false, 
+    "zero_optimization": {
+        "stage": 0, 
+        "allgather_partitions": true, 
+        "reduce_scatter": true, 
+        "allgather_bucket_size": 5.000000e+07, 
+        "reduce_bucket_size": 5.000000e+07, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "cpu_offload": false
+    }
+}
+fp16=True
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+
+Finished Training-------------------**************----------------------
+-----------------------------------------after train a batch 
+ Nvidia-smi: 1633.125 MB
+    Memory Allocated: 1.46728515625  MegaBytes
+Max Memory Allocated: 3.2158203125  MegaBytes
+Finished Training-------------------**************----------------------
+
+Finished Training-------------------**************----------------------
+Finished Training-------------------**************----------------------
+GroundTruth:    cat  ship  ship plane
+GroundTruth:    cat  ship  ship plane
+GroundTruth:    cat  ship  ship plane
+GroundTruth:    cat  ship  ship plane
+Predicted:    cat   cat   cat   cat
+Predicted:    cat   cat   cat   cat
+Predicted:    cat   cat   cat   cat
+Predicted:    cat   cat   cat   cat
+Accuracy of the network on the 10000 test images: 10 %
+Accuracy of the network on the 10000 test images: 10 %
+Accuracy of the network on the 10000 test images: 10 %
+Accuracy of the network on the 10000 test images: 10 %
+Accuracy of plane :  0 %
+Accuracy of   car :  0 %
+Accuracy of  bird :  0 %
+Accuracy of   cat : 100 %
+Accuracy of  deer :  0 %
+Accuracy of   dog :  0 %
+Accuracy of  frog :  0 %
+Accuracy of horse :  0 %
+Accuracy of  ship :  0 %
+Accuracy of truck :  0 %
+Accuracy of plane :  0 %
+Accuracy of   car :  0 %
+Accuracy of  bird :  0 %
+Accuracy of   cat : 100 %
+Accuracy of  deer :  0 %
+Accuracy of   dog :  0 %
+Accuracy of  frog :  0 %
+Accuracy of horse :  0 %
+Accuracy of  ship :  0 %
+Accuracy of truck :  0 %
+Accuracy of plane :  0 %
+Accuracy of   car :  0 %
+Accuracy of  bird :  0 %
+Accuracy of   cat : 100 %
+Accuracy of  deer :  0 %
+Accuracy of   dog :  0 %
+Accuracy of  frog :  0 %
+Accuracy of horse :  0 %
+Accuracy of  ship :  0 %
+Accuracy of truck :  0 %
+Accuracy of plane :  0 %
+Accuracy of   car :  0 %
+Accuracy of  bird :  0 %
+Accuracy of   cat : 100 %
+Accuracy of  deer :  0 %
+Accuracy of   dog :  0 %
+Accuracy of  frog :  0 %
+Accuracy of horse :  0 %
+Accuracy of  ship :  0 %
+Accuracy of truck :  0 %
+[2022-09-13 22:28:28,441] [INFO] [launch.py:318:main] Process 5324 exits successfully.
+[2022-09-13 22:28:28,441] [INFO] [launch.py:318:main] Process 5323 exits successfully.
+[2022-09-13 22:28:28,442] [INFO] [launch.py:318:main] Process 5322 exits successfully.
+[2022-09-13 22:28:28,442] [INFO] [launch.py:318:main] Process 5321 exits successfully.
